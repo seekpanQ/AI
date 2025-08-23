@@ -1,5 +1,6 @@
 package com.toastmasters.meeting.common;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import lombok.Data;
 
@@ -10,6 +11,7 @@ import lombok.Data;
  * @author seekpan
  */
 @Data
+@Schema(description = "统一响应结果包装类，用于封装API接口的返回结果")
 public class RestResult<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -17,16 +19,19 @@ public class RestResult<T> implements Serializable {
     /**
      * 响应码
      */
+    @Schema(description = "响应码，000000表示成功，其他表示失败", example = "000000")
     private String code;
 
     /**
      * 响应消息
      */
+    @Schema(description = "响应消息，描述操作结果", example = "调用成功")
     private String msg;
 
     /**
      * 响应数据
      */
+    @Schema(description = "响应数据，实际返回的业务数据")
     private T data;
 
     /**
